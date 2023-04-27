@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { Navbar } from "./Navbar.tsx";
 import { BrowserRouter } from "react-router-dom";
+import App from "./App.tsx";
+import MyForm from "./Formulario.tsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
@@ -15,7 +17,9 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   >
     <React.StrictMode>
       <BrowserRouter>
-        <Navbar />
+        <App />
+        {/* <Navbar />
+        <MyForm /> */}
       </BrowserRouter>
     </React.StrictMode>
   </Auth0Provider>
