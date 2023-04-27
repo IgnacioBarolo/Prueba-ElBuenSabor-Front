@@ -1,30 +1,36 @@
 import React, { useState } from "react";
 import "./Formulario.css";
 
-interface FormData {
+interface FormValues {
   name: string;
-  estado: boolean; // Añadimos un campo para el género
+  status: "alta" | "baja";
 }
 
-const MyForm: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    estado: false, // Inicializamos el campo del género en blanco
-  });
+const initialValues: FormValues = {
+  name: "",
+  status: "alta",
+};
 
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = event.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+const MyForm: React.FC = () => {
+  const [formValues, setFormValues] = useState<FormValues>(initialValues);
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFormValues({
+      ...formValues,
+      name: event.target.value,
+    });
+  };
+
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setFormValues({
+      ...formValues,
+      status: event.target.value as "alta" | "baja",
+    });
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formData);
+    console.log(formValues);
   };
 
   return (
@@ -37,13 +43,17 @@ const MyForm: React.FC = () => {
             className="imput-form"
             type="text"
             name="name"
-            onChange={handleChange}
+            onChange={handleInputChange}
           />
         </label>
 
         <label>
-          Estado: {/* Agregamos un nuevo campo para el género */}
-          <select name="estado" onChange={handleChange}>
+          Estado:
+          <select
+            name="estado"
+            value={formValues.status}
+            onChange={handleSelectChange}
+          >
             <option value="male">Alta</option>
             <option value="female">Baja</option>
           </select>
