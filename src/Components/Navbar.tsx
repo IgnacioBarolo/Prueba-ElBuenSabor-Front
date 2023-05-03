@@ -51,7 +51,6 @@ export const Navbar = () => {
             </>
           )}
         </li>
-        <li>{isAuthenticated ? <LogoutButton /> : <></>}</li>
         <li
           className="circulo"
           style={{ marginLeft: "15px", marginRight: "15px" }}

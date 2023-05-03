@@ -5,14 +5,15 @@ export const LogoutButton = () => {
   const { logout } = useAuth0();
 
   return (
-    <button
+    <div
       onClick={() =>
         logout({ logoutParams: { returnTo: window.location.origin } })
       }
-      className="boton"
+      // className="boton"
       style={{ width: "50px" }}
     >
-      <BiLogOut size="2em" />
-    </button>
+      Cerrar Sesion
+      {/* <BiLogOut size="2em" /> */}
+    </div>
   );
 };
