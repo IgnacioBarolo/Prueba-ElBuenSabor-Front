@@ -1,36 +1,36 @@
 import React, { useState } from "react";
 import "./Formulario.css";
 
-interface FormValues {
+interface Rubros {
   name: string;
   status: "alta" | "baja";
 }
 
-const initialValues: FormValues = {
+const initialValues: Rubros = {
   name: "",
   status: "alta",
 };
 
 const MyForm: React.FC = () => {
-  const [formValues, setFormValues] = useState<FormValues>(initialValues);
+  const [Rubros, setRubros] = useState<Rubros>(initialValues);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFormValues({
-      ...formValues,
+    setRubros({
+      ...Rubros,
       name: event.target.value,
     });
   };
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setFormValues({
-      ...formValues,
+    setRubros({
+      ...Rubros,
       status: event.target.value as "alta" | "baja",
     });
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formValues);
+    console.log(Rubros);
   };
 
   return (
@@ -51,7 +51,7 @@ const MyForm: React.FC = () => {
           Estado:
           <select
             name="estado"
-            value={formValues.status}
+            value={Rubros.status}
             onChange={handleSelectChange}
           >
             <option value="male">Alta</option>
